@@ -2,6 +2,8 @@ import React from "react";
 import doctor from "../../assets/images/doctor.png";
 import appointment from "../../assets/images/appointment.png"; 
 import PrimaryButton from "../Shared/PrimaryButton";
+import { DayPicker } from 'react-day-picker';
+import 'react-day-picker/dist/style.css';
 const MakeAppointment = () => {
   return (
     <section style={{

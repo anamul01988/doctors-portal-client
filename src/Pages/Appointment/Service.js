@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 const Service = ({service, setTreatement}) => {
     const {name, slots} = service;
     return (
-        <div class="card lg:max-w-lg bg-base-100 shadow-xl my-6">
-        <div class="card-body text-center">
-          <h2 class="text-xl text-secondary font-bold">{name}</h2>
+        <div className="card lg:max-w-lg bg-base-100 shadow-xl my-6">
+        <div className="card-body text-center">
+          <h2 className="text-xl text-secondary font-bold">{name}</h2>
           <p>
               {
                   slots.length //length 0 howa mane flase fole no slot available dekhabe ,,condition ta slots.lenght > 0 --> aita o dite partam
@@ -14,16 +14,16 @@ const Service = ({service, setTreatement}) => {
               }
           </p>
           <p>{slots.length} {slots.length > 1 ? 'spaces' : 'space'} spaces avialble</p>
-          <div class="card-actions justify-center">
+          <div className="card-actions justify-center">
             {/* <button disabled={slots.length === 0}
             onClick={()=>setTreatement(service)}
-             class=""
+             className=""
              >Book Apponitment</button> */}
              <label 
               for="booking-modal"
               disabled={slots.length === 0}
               onClick={()=>setTreatement(service)}
-              class="btn btn-sm  btn-secondary text-white uppercase  bg-gradient-to-r from-secondary to-primary"
+              className="btn btn-sm  btn-secondary text-white uppercase  bg-gradient-to-r from-secondary to-primary"
               >Book Appointment</label>
           </div>
         </div>

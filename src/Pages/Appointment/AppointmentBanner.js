@@ -13,7 +13,7 @@ const AppointmentBanner = ({date, setDate}) => {
               
                 mode="single"
                 selected={date}
-                onSelect={setDate} >
+                onSelect={setDate} > 
                
               </DayPicker>
       

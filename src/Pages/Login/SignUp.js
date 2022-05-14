@@ -6,7 +6,7 @@ import Loading from "../Shared/Loading";
 import { Link, useNavigate } from "react-router-dom";
 import { useNavigation } from 'react-day-picker';
 const SignUp = () => {
-    const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth, {sendEmailVerification:true});
   const {
     register,
     formState: { errors },
@@ -43,7 +43,7 @@ const SignUp = () => {
     navigate('/appointment')
   };
     return (
-        <div className="flex h-screen justify-center items-center">
+        <div className="flex h-screen justify-center items-center mt-20">
         <div className="card w-96 bg-base-100 shadow-xl">
           <div className="card-body">
             <h2 className="text-center text-2xl font-bold">Sign-up</h2>

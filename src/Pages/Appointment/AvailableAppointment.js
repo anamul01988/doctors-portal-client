@@ -8,13 +8,15 @@ import Service from './Service';
 const AvailableAppointment = ({date}) => {
     // const [services, setServices] = useState([]);
     const [treatement, setTreatement] = useState(null);
-    const formattedDate = format(date, 'pp');
+    const formattedDate = format(date, 'PP');
     const {data: services, isLoading, refetch} = useQuery(['available', formattedDate], ()=> fetch(`http://localhost:5000/available?date=${formattedDate}`)
              .then(res => res.json())
     )
     if(isLoading){
         return <Loading></Loading>
     }
+    console.log(refetch);
+
     // useEffect(()=>{
     //       fetch(`http://localhost:5000/available?date=${formattedDate}`)
     //       .then(res => res.json())
@@ -29,13 +31,14 @@ const AvailableAppointment = ({date}) => {
                         key={service._id}
                         service={service}
                         setTreatement={setTreatement}
-                        refetch = {refetch}
+                      
                         ></Service>)
                 }
             </div>
             {
                 treatement && <BookingModal date={date}
                  treatement={treatement}
+                 refetch = {refetch}
                  setTreatement={setTreatement}></BookingModal>
             }
         </div>

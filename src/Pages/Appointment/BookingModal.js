@@ -23,7 +23,7 @@ const BookingModal = ({ date, treatement, setTreatement, refetch }) => {
         phone: event.target.phone.value
       }
       console.log(booking)
-      fetch('http://localhost:5000/booking',{
+      fetch('https://frozen-ridge-08310.herokuapp.com/booking',{
         method: 'POST',
         headers: {
           'content-type' : 'application/json'
@@ -48,8 +48,8 @@ const BookingModal = ({ date, treatement, setTreatement, refetch }) => {
       })
     
   }
-  console.log(refetch)
-  console.log(treatement)
+  // console.log(refetch)
+  // console.log(treatement)
   return (
     <div>
       <input type="checkbox" id="booking-modal" className="modal-toggle" />

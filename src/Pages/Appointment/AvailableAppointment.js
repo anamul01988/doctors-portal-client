@@ -9,16 +9,16 @@ const AvailableAppointment = ({date}) => {
     // const [services, setServices] = useState([]);
     const [treatement, setTreatement] = useState(null);
     const formattedDate = format(date, 'PP');
-    const {data: services, isLoading, refetch} = useQuery(['available', formattedDate], ()=> fetch(`http://localhost:5000/available?date=${formattedDate}`)
+    const {data: services, isLoading, refetch} = useQuery(['available', formattedDate], ()=> fetch(`https://frozen-ridge-08310.herokuapp.com/available?date=${formattedDate}`)
              .then(res => res.json())
     )
     if(isLoading){
         return <Loading></Loading>
     }
-    console.log(refetch);
+
 
     // useEffect(()=>{
-    //       fetch(`http://localhost:5000/available?date=${formattedDate}`)
+    //       fetch(`https://frozen-ridge-08310.herokuapp.com/available?date=${formattedDate}`)
     //       .then(res => res.json())
     //       .then(data => setServices(data))
     // },[formattedDate])

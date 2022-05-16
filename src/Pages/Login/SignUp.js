@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import Loading from "../Shared/Loading";
 import { Link, useNavigate } from "react-router-dom";
 import { useNavigation } from 'react-day-picker';
+import useToken from '../../hooks/useToken';
 const SignUp = () => {
     const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth, {sendEmailVerification:true});
   const {
@@ -21,6 +22,8 @@ const SignUp = () => {
   ] = useCreateUserWithEmailAndPassword(auth);
    
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+  const [token] = useToken(user || guser) //user paile useToken hook call hoye sekhane chole jacce
   const navigate = useNavigate();
   let signInerrorMessage;
 
@@ -32,15 +35,16 @@ const SignUp = () => {
     signInerrorMessage = <p className="text-red-500"><small>{error?.message || gerror?.message || updateError?.message}</small></p>
   }
 
-  if (user || guser) {
-    console.log(user || guser);
+  if (token) {
+    // console.log(user || guser);
+    navigate('/appointment')
   }
   const onSubmit = async(data) => {
     // console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password)
     await updateProfile({ displayName:data.name });
     console.log('update done')
-    navigate('/appointment')
+    // navigate('/appointment')
   };
     return (
         <div className="flex h-screen justify-center items-center mt-20">

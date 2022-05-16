@@ -8,6 +8,7 @@ import {
 import { useForm } from "react-hook-form";
 import Loading from "../Shared/Loading";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import useToken from "../../hooks/useToken";
 const Login = () => {
   const [email, setEmail] = useState('');
   console.log(email)
@@ -20,8 +21,9 @@ const Login = () => {
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+const [token] = useToken(user || guser)
 
-  const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(auth);
+  const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(auth); //self try
 
   let signInerrorMessage;
   const navigate = useNavigate();
@@ -29,11 +31,11 @@ const Login = () => {
   let from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
-    if (user || guser) {
-      console.log(user || guser);
+    if (token) {
+      // console.log(user || guser);
       navigate(from, { replace: true });
     }
-  }, [user, guser, from, navigate]);
+  }, [token, from, navigate]);
 
   if (loading || gloading ||sending) {
     return <Loading />;

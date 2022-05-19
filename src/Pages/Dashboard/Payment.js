@@ -13,6 +13,7 @@ const stripePromise = loadStripe('pk_test_51L0rfOBAAde9UJpJh1zxvJ2oE9izpBsxdydry
 const Payment = () => {
     const { id } = useParams();
     const url = `http://localhost:5000/booking/${id}`;
+    console.log(url)
 
     const { data: appointment, isLoading } = useQuery(['booking', id], () => fetch(url, { //onek data tai useQuery use hoice id gula arry kore nite hoice
         method: 'GET',

@@ -24,7 +24,7 @@ const BookingModal = ({ date, treatement, setTreatement, refetch }) => {
         phone: event.target.phone.value
       }
       console.log(booking)
-      fetch('https://frozen-ridge-08310.herokuapp.com/booking',{
+      fetch('http://localhost:5000/booking',{
         method: 'POST',
         headers: {
           'content-type' : 'application/json'

@@ -5,7 +5,7 @@ const DoctorRow = ({ doctor, index, refetch, setDeletingDoctor }) => {
     const { name, specialty, img } = doctor;
     // const { name, specialty, img, email } = doctor;
     // const handleDelete =() =>{
-    //     fetch(`http://localhost:5000/doctor/${email}`, {
+    //     fetch(`https://frozen-ridge-08310.herokuapp.com/doctor/${email}`, {
     //                 method: 'DELETE',
     //                 headers: {
                

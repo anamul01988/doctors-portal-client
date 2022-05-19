@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Service = ({service, setTreatement}) => {
-    const {name, slots} = service;
+    const {name, slots, price} = service;
     return (
         <div className="card lg:max-w-lg bg-base-100 shadow-xl my-6">
         <div className="card-body text-center">
@@ -14,6 +14,7 @@ const Service = ({service, setTreatement}) => {
               }
           </p>
           <p>{slots.length} {slots.length > 1 ? 'spaces' : 'space'} spaces avialble</p>
+          <p><small>price: ${price}</small></p>
           <div className="card-actions justify-center">
             {/* <button disabled={slots.length === 0}
             onClick={()=>setTreatement(service)}

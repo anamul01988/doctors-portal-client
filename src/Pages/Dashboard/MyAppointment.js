@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React, {useState, useEffect} from 'react';
 import {useAuthState} from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init'
 const MyAppointment = () => {
     const [appointments, setAppointments] = useState([]);
@@ -68,17 +68,28 @@ const MyAppointment = () => {
         <th>Date</th>
         <th>Slot</th>
         <th>Treatment</th>
+        <th>Payment</th>
       </tr>
     </thead>
     <tbody>
        {
-           appointments.map((a, index)=> <tr>
+           appointments.map((a, index)=> <tr key={a._id}>
                <th>{index + 1}</th>
                <td>{a.patientName}</td>
                <td>{a.date}</td>
                <td>{a.slot}</td>
                <td>{a.treatment}</td>
-           </tr>)
+               <td>
+                 {/* {(a.price) && <button className='btn btn-xs btn-success'>Pay</button>} */}
+                 {(a.price && !a.paid) && <Link to={`/dashboard/payment/${a._id}`}><button className='btn btn-xs btn-success'>pay</button></Link>}
+                 {/* {(a.price && a.paid) && <span className='text-success'>paid</span>} */}
+                 {(a.price && a.paid) && <div>
+                  <span className='text-success'>paid</span>
+                  <p>Transaction id: <span className='text-success'>{a.transactionId}</span></p>
+                   </div>}
+              </td>
+           </tr>
+           )
        }
      
     </tbody>
